@@ -2,19 +2,13 @@
   Once you complete a problem, refresh ./SpecRunner.html in your browser and check to see if the problem's test(s) are passing.
   Passed tests will be indicated by a green circle.
   Failed tests will be indicated by a red X.
-
   You can refresh the page at any time to re-run all the tests.
-
   In this repo your job is to write functions to make each function call work properly.
-
   Here's an example of code that will be given to you:
-
   sayHi('Hi Katie', function(thingToSay){
     alert(thingToSay);
   });
-
   It would be your job to create the sayHi function:
-
   var sayHi = function(str, cb){
     cb(str);
   }
@@ -28,12 +22,18 @@
 */
 
 // Code Here 
+function first (array, callback){
+  callback(array[0]);
+}
+
+
+
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 
 first(names, function(firstName){
-  console.log('The first name in names is ' + firstName);
+  // console.log('The first name in names is ' + firstName);
   return firstName;
 });
 // Do not edit the code above.
@@ -47,11 +47,13 @@ first(names, function(firstName){
   Then invoke the callback, passing in the last element in the array as the argument.
 */
 
-//Code Here
+function last (array, callback){
+  callback(array[array.length-1])
+}
 
 // Do not edit the code below.
 last(names, function(lastName){
-  console.log('The last name in names is ' + lastName);
+  // console.log('The last name in names is ' + lastName);
   return lastName;
 });
 // Do not edit the code above.
@@ -65,11 +67,13 @@ last(names, function(lastName){
   Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
 
-//Code Here
+function multiply(num1, num2, callback){
+  callback(num1 * num2)
+}
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
-  console.log('The answer is ' + answer); //should console.log 12
+  // console.log('The answer is ' + answer); //should console.log 12
 });
 // Do not edit the code above.
 
@@ -84,7 +88,16 @@ multiply(4, 3, function(answer){
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-//Code Here 
+function contains(array, name, callback) {
+  for (i = 0; i < array.length; i++){
+  if (array.includes(name)){
+    return callback(true)
+  }else {
+    return callback(false)
+} 
+}
+}
+
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -105,11 +118,19 @@ contains(names, 'Colt', function(result){
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 */
 
-//Code Here
+function uniq(array, callback){
+newArray =[]
+  for (i = 0; i < array.length; i++){
+    if (!newArray.includes(array[i])){
+      newArray.push(array[i])
+    } 
+  }
+  callback(newArray);
+}
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
-  console.log('The new names array with all the duplicate items removed is ', uniqArr);
+  // console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
 // Do not edit the code above.
 
@@ -122,11 +143,14 @@ uniq(names, function(uniqArr){
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
 
-//Code Here 
+function each(array, callback){
+  for (let i = 0; i < array.length; i++)
+   callback (array[i], i)
 
+}
 // Do not edit the code below.
 each(names, function(item, indice){
-  console.log('The item in the ' + indice + ' position is ' + item)
+  // console.log('The item in the ' + indice + ' position is ' + item)
 });
 // Do not edit the code above.
 
@@ -139,7 +163,15 @@ each(names, function(item, indice){
   When the correct user object is found, invoke the callback with the user object as an argument.
 */
 
-// Code here
+function getUserById(array, id, callback){
+  for (i = 0; i < array.length; i++){
+    // console.log(array[i].id)
+    if (id === array[i].id){
+      callback(array[i])
+    }
+  }
+
+}
 
 // Do not edit the code below.
 var users = [
