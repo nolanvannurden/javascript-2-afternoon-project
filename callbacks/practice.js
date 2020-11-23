@@ -88,14 +88,8 @@ multiply(4, 3, function(answer){
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-function contains(array, name, callback) {
-  for (i = 0; i < array.length; i++){
-  if (array.includes(name)){
-    return callback(true)
-  }else {
-    return callback(false)
-} 
-}
+function contains(array, name, callback){
+  callback(array.includes(name));
 }
 
 
